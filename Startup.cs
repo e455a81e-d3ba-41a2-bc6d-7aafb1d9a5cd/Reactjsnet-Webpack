@@ -36,11 +36,13 @@ namespace reactjsnet
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddReact();
             services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
+
+            services.AddReact();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.BuildServiceProvider();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,9 +65,10 @@ namespace reactjsnet
             {
                 config
                     .SetReuseJavaScriptEngines(true)
+                    .SetAllowJavaScriptPrecompilation(true)
                     .SetLoadBabel(true)
                     .SetBabelVersion(BabelVersions.Babel7)
-                    .AddScriptWithoutTransform("~/wwwroot/dist/Home.bundle.js");
+                    .AddScriptWithoutTransform("~/dist/bundle.js");
             });
 
             app.UseStaticFiles();

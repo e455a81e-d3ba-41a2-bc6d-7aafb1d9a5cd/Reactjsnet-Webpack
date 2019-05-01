@@ -1,11 +1,3 @@
-﻿import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
+﻿import HomeComponent from './components/Home';
 
-import RootComponent from './Home.tsx';
-
-global.React = React;
-global.ReactDOM = ReactDOM;
-global.ReactDOMServer = ReactDOMServer;
-
-global.RootComponent = RootComponent;
+global.HomeComponent = HomeComponent;

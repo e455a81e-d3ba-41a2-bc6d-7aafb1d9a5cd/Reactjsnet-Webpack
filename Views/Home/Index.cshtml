@@ -1,4 +1,6 @@
 ﻿@using React.AspNet
+@using React.RenderFunctions
+
 
 @{
     ViewData["Title"] = "Home Page";
@@ -8,10 +10,7 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+@Html.React("HomeComponent", new { })
 
-@Html.React("Home", new { })
-<script src="/dist/Home.js"></script>
-<script src="/dist/runtime.js"></script>
-<script src="/dist/vendor.js"></script>
-<script src="/dist/components.js"></script>
+<script src="~/dist/bundle.js"></script>
 @Html.ReactInitJavaScript()
