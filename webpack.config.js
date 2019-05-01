@@ -1,6 +1,7 @@
 ﻿const path = require('path');
 
 module.exports = {
+    devtool: 'inline-source-map ',
     entry: {
         components: './Content/expose-components.js',
     },
@@ -18,6 +19,12 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.js$/,
+                use: ["source-map-loader"],
+                enforce: "pre"
+            }
+
 		],
 	},
 };
